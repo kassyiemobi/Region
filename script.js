@@ -35,20 +35,13 @@ const api = () => {
   fetch(
     "https://cors-anywhere.herokuapp.com/https://ov-region.xyz//api/earth/index?category=states"
   )
-    // Handle success
-    .then((response) => response.json()) // convert to json
+    .then((response) => response.json())
     .then((json) => {
-      // console.log(json.data)
       let state = json.data;
-      //target container
       let box = document.querySelector("#states");
-      // console.log(results);
-      //convert object gotten from response to array in order to be able to map it
       const states = Object.values(state);
 
       console.log(states);
-      //targeting the container to display the list
-      //and mapping the array inside the select tag
       box.innerHTML =
         "<select class='form-control input-lg'>" +
         states
@@ -58,6 +51,31 @@ const api = () => {
           .join("") +
         "</section>";
     })
-    .catch((err) => console.log("Request Failed", err)); // Catch errors
+    .catch((err) => console.log("Request Failed", err));
 };
 api();
+
+const Api = () => {
+  // GET Request.
+  fetch(
+    "https://cors-anywhere.herokuapp.com/https://ov-region.xyz//api/earth/index?category=cities"
+  )
+    .then((response) => response.json())
+    .then((json) => {
+      let city = json.data;
+      let box = document.querySelector("#cities");
+      const cities = Object.values(city);
+
+      console.log(cities);
+      box.innerHTML =
+        "<select class='form-control input-lg'>" +
+        cities
+          .map(function (city) {
+            return "<option >" + city + "</option>";
+          })
+          .join("") +
+        "</section>";
+    })
+    .catch((err) => console.log("Request Failed", err));
+};
+Api();
