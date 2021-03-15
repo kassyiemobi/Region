@@ -13,6 +13,7 @@ const url = () => {
       // console.log(results);
       //convert object gotten from response to array in order to be able to map it
       const countries = Object.values(country);
+      countries.unshift("Select Country");
 
       console.log(countries);
       //targeting the container to display the list
@@ -40,6 +41,7 @@ const api = () => {
       let state = json.data;
       let box = document.querySelector("#states");
       const states = Object.values(state);
+      states.unshift("Select State")
 
       console.log(states);
       box.innerHTML =
@@ -65,6 +67,7 @@ const Api = () => {
       let city = json.data;
       let box = document.querySelector("#cities");
       const cities = Object.values(city);
+      cities.unshift("Select City")
 
       console.log(cities);
       box.innerHTML =
@@ -85,9 +88,10 @@ const getData = (document.querySelector("#submit").onclick = (e) => {
   e.preventDefault();
   //targeting the list of contries, states and cities
   var d = document.querySelector("select");
+
   //targeting the current value of the selected country/state/city
   var selectedText = d.options[d.selectedIndex].innerHTML;
 
   //displaying in console.log
-  console.log("Selected Text: " + selectedText + " Value: " + selectedValue);
+  console.log("Selected Text: " + selectedText);
 });
