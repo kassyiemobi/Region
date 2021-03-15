@@ -79,3 +79,15 @@ const Api = () => {
     .catch((err) => console.log("Request Failed", err));
 };
 Api();
+
+const getData = (document.querySelector("#submit").onclick = (e) => {
+  //prevents the form from refreshing everytime
+  e.preventDefault();
+  //targeting the list of contries, states and cities
+  var d = document.querySelector("select");
+  //targeting the current value of the selected country/state/city
+  var selectedText = d.options[d.selectedIndex].innerHTML;
+
+  //displaying in console.log
+  console.log("Selected Text: " + selectedText + " Value: " + selectedValue);
+});
